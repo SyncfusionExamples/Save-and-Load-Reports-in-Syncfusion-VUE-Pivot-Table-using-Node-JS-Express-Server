@@ -14,20 +14,17 @@
     </div>
   </div>
 </template>
+
 <script>
 import Vue from "vue";
 import {
-  PivotViewPlugin,
+  PivotViewComponent,
   FieldList,
   CalculatedField,
   Toolbar,
   ConditionalFormatting,
   NumberFormatting
 } from "@syncfusion/ej2-vue-pivotview";
-import { enableRipple } from "@syncfusion/ej2-base";
-enableRipple(false);
-
-Vue.use(PivotViewPlugin);
 
 var data = [
   { 'Sold': 25, 'Amount': 42600, 'Country': 'France', 'Products': 'Mountain Bikes', 'Year': 'FY 2015', 'Quarter': 'Q4' },
@@ -188,7 +185,10 @@ var data = [
   { 'Sold': 11, 'Amount': 17550.5, 'Country': 'United Kingdom', 'Products': 'Touring Bikes', 'Year': 'FY 2017', 'Quarter': 'Q4' }];
 
 export default {
-  data() {
+  components: {
+    'ejs-pivotview': PivotViewComponent
+  },
+  data () {
     return {
       dataSourceSettings: {
         columns: [{ name: 'Year', caption: 'Production Year' }, { name: 'Quarter' }],
@@ -229,9 +229,9 @@ export default {
       allowCalculatedField: true,
       showFieldList: true,
       width: "700",
-    };
+    }
   },
-  methods: {
+   methods: {
     updateReport(reportList) {
       var pivotTableObj = (this.$refs.pivotview).ej2Instances;
       // Here you can refresh the report list by feeding updated reports fetched from the database.
@@ -334,19 +334,16 @@ export default {
   provide: {
     pivotview: [FieldList, CalculatedField, Toolbar, ConditionalFormatting, NumberFormatting]
   }
-};
-
+}
 </script>
 <style>
-@import "../node_modules/@syncfusion/ej2-base/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-inputs/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-buttons/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-splitbuttons/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-dropdowns/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-lists/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-popups/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-navigations/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-grids/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-pivotview/styles/material3.css";
-@import "../node_modules/@syncfusion/ej2-vue-pivotview/styles/material3.css";
+  @import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+  @import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+  @import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+  @import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+  @import "../node_modules/@syncfusion/ej2-lists/styles/material.css";
+  @import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
+  @import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+  @import "../node_modules/@syncfusion/ej2-grids/styles/material.css";
+  @import "../node_modules/@syncfusion/ej2-vue-pivotview/styles/material.css";
 </style>
